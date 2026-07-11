@@ -4,6 +4,8 @@ version = "0.0.0"
 edition = "2024"
 description = "Estonian digital signature creation and validation"
 license = "Apache-2.0"
+homepage = "https://github.com/takakv/allkiri"
+repository = "https://github.com/takakv/allkiri"
 keywords = ["digidoc", "asice", "xades", "eidas", "bdoc"]
 categories = ["cryptography"]
 
