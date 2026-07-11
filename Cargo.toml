@@ -1,0 +1,10 @@
+[package]
+name = "allkiri"
+version = "0.0.0"
+edition = "2024"
+description = "Estonian digital signature creation and validation"
+license = "Apache-2.0"
+keywords = ["digidoc", "asice", "xades", "eidas", "bdoc"]
+categories = ["cryptography"]
+
+[dependencies]
