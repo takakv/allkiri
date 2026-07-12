@@ -1,6 +1,9 @@
 pub use asic_e;
 pub use xades;
 
+#[cfg(all(feature = "pkcs11", not(target_arch = "wasm32")))]
+pub mod pkcs11;
+
 use xades::DataObject;
 
 /// SK ID Solutions production timestamping service (requires a contract).
@@ -17,6 +20,10 @@ pub enum Error {
     /// Signature creation or validation error.
     #[error(transparent)]
     Signature(#[from] xades::LibError),
+    /// ID card discovery or PKCS#11 error.
+    #[cfg(all(feature = "pkcs11", not(target_arch = "wasm32")))]
+    #[error(transparent)]
+    IdCard(#[from] esteid_cryptoki::EstEidError),
 }
 
 pub type Result<T> = std::result::Result<T, Error>;

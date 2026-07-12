@@ -1,6 +1,6 @@
 [package]
 name = "allkiri"
-version = "0.0.0"
+version = "0.1.0"
 edition = "2024"
 description = "Estonian digital signature creation and validation"
 license = "Apache-2.0"
@@ -12,11 +12,24 @@ categories = ["cryptography"]
 [features]
 default = ["network"]
 network = ["xades/network"]
+pkcs11 = ["dep:esteid-cryptoki", "dep:xades-pkcs11"]
 
 [dependencies]
 asic-e = "0.1.1"
 thiserror = "2.0.18"
 xades = "0.2.1"
+esteid-cryptoki = { version = "0.1.0", optional = true }
+xades-pkcs11 = { version = "0.1.1", optional = true }
+
+[dev-dependencies]
+x509-cert = { version = "0.2.5", features = ["pem"] }
+rpassword = "7"
+
+[[example]]
+name = "sign_id_card"
+required-features = ["pkcs11", "network"]
 
 [patch.crates-io]
 xades = { git = "https://github.com/takakv/rust-xades.git" }
+# tsp-ltv 0.3.1 only supports <= 64-bit nonces and select ECDSA-SHA2 combinations
+tsp-ltv = { git = "https://github.com/takakv/tsp-ltv.git" }
