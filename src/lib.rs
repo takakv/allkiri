@@ -43,7 +43,8 @@ pub struct SigningConfig {
     /// RFC 3161 timestamping service used for LT signatures.
     pub tsa_url: String,
     /// DER certificates completing the signer's chain.
-    /// At least the issuing CA is required for LT.
+    /// If left empty, missing issuers are discovered through the
+    /// signing certificate's AIA `caIssuers` URLs.
     pub issuer_certs_der: Vec<Vec<u8>>,
     /// Underlying XAdES options (e.g. claimed signing time).
     pub options: xades::SigningOptions,

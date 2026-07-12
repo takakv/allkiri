@@ -10,14 +10,17 @@ With the `pkcs11` feature, `allkiri` can sign an ASiC-E container using an Eston
 
 ```sh
 cargo run --features pkcs11 --example sign_id_card -- \
-    test.txt test.asice testESTEID2025.crt
+    test.txt test.asice
 ```
 
-Fetch the issuer certificate with
+The issuer certificate is auto-discovered through the AIA CA Issuers.
+Alternatively, fetch it manually with 
 
 ```sh
 curl -O https://crt-test.eidpki.ee/testESTEID2025.crt
 ```
+
+and pass the certificate as a third positional argument.
 
 ## License
 

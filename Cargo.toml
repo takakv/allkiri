@@ -17,7 +17,7 @@ pkcs11 = ["dep:esteid-cryptoki", "dep:xades-pkcs11"]
 [dependencies]
 asic-e = "0.1.1"
 thiserror = "2.0.18"
-xades = "0.2.1"
+xades = "0.2.2"
 esteid-cryptoki = { version = "0.1.0", optional = true }
 xades-pkcs11 = { version = "0.1.1", optional = true }
 
@@ -30,6 +30,5 @@ name = "sign_id_card"
 required-features = ["pkcs11", "network"]
 
 [patch.crates-io]
-xades = { git = "https://github.com/takakv/rust-xades.git" }
 # tsp-ltv 0.3.1 only supports <= 64-bit nonces and select ECDSA-SHA2 combinations
 tsp-ltv = { git = "https://github.com/takakv/tsp-ltv.git" }
